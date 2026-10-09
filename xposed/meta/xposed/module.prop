@@ -1,0 +1,9 @@
+id=io.github.shitianyaa.finevolume
+name=FineVolume / 音量细调
+version=1.0.0
+versionCode=1
+author=shitianyaa
+description=Finer media volume over Bluetooth: turns off AVRCP absolute volume so every volume step is audible on the headset
+minApiVersion=102
+targetApiVersion=102
+staticScope=false

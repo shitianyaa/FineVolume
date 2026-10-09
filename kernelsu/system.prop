@@ -1,0 +1,14 @@
+# Media volume steps.  (Chinese notes live in README and customize.sh output.)
+#
+# Android's stock value is 15: each volume-key press jumps ~6.6% of the range.
+# Raise it for finer control. AOSP reads this property once, when AudioService
+# starts, so a change takes effect on the next reboot.
+#
+# Recommended range: 15 (stock) to 100. Hard limit enforced by customize.sh: 200.
+#
+# This file is the single source of truth. Edit the number, reboot.
+#
+# Kept ASCII-only on purpose: this file is parsed at boot, before anything else,
+# and a parse failure would take the whole module down.
+
+ro.config.media_vol_steps=30

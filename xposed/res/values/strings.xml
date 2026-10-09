@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FineVolume</string>
+    <string name="description">Finer media volume over Bluetooth. Turns off AVRCP absolute volume so the phone attenuates the audio itself, making every media-volume step audible on the headset instead of every second press being a dead press. Needs extra volume steps (the FineVolume KernelSU module) for the steps to exist at all. Scope: System Framework; then reboot. No settings UI: active whenever the module is enabled.</string>
+</resources>

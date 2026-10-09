@@ -1,0 +1,6 @@
+id=fine_volume
+name=FineVolume / 音量细调
+version=v1.0.0
+versionCode=1
+author=shitianyaa
+description=More (finer) media volume steps: 30 instead of 15. Edit /data/adb/modules/fine_volume/system.prop and reboot to change. On Bluetooth you also need the FineVolume Xposed module. / 更细的媒体音量档数：15 档改为 30 档。要改数值请编辑 /data/adb/modules/fine_volume/system.prop 后重启。用蓝牙耳机还需配合 FineVolume Xposed 模块。

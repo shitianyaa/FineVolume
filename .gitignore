@@ -1,0 +1,10 @@
+# Signing keys: never commit. CI restores one from the KEYSTORE_BASE64 secret; the
+# build generates a throwaway one otherwise.
+key.jks
+*.jks
+*.keystore
+# Build output
+out/
+# IDE
+.idea/
+*.iml

@@ -1,0 +1,60 @@
+name: Build
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  kernelsu:
+    name: KernelSU module zip
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build
+        working-directory: kernelsu
+        run: bash build-module.sh
+
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: FineVolume-kernelsu
+          path: kernelsu/out/FineVolume.zip
+
+  xposed:
+    name: Xposed APK
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install build toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            default-jdk-headless aapt zipalign apksigner dalvik-exchange \
+            android-sdk-platform-23 zip
+
+      - name: Normalise line endings
+        run: sed -i 's/\r$//' xposed/build.sh xposed/meta/xposed/*
+
+      - name: Restore signing key
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+        run: |
+          if [ -n "$KEYSTORE_BASE64" ]; then
+            echo "$KEYSTORE_BASE64" | base64 -d > xposed/key.jks
+            echo "using the stored keystore"
+          else
+            echo "no keystore secret: build.sh will generate a throwaway one"
+          fi
+
+      - name: Build
+        working-directory: xposed
+        run: bash build.sh
+
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: FineVolume-xposed
+          path: xposed/out/FineVolume.apk
