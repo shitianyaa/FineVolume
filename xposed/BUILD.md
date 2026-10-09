@@ -7,16 +7,19 @@ Linux, macOS, or Windows with WSL (Ubuntu). / Linux、macOS，或带 WSL (Ubuntu
 - Bash
 - JDK 8 or newer / JDK 8 或更新
 - Android platform 23 (`android.jar`) / Android platform 23 (`android.jar`)
-- `aapt`, `zipalign`, `apksigner`, `d8`
+- `aapt`, `zipalign`, `apksigner`, and a dexer: `dalvik-exchange` **or** `d8`
 
 On Ubuntu / Debian (including WSL) / 在 Ubuntu / Debian（含 WSL）上：
 
 ```bash
-sudo apt install default-jdk-headless aapt zipalign apksigner android-sdk-platform-23
+sudo apt install default-jdk-headless aapt zipalign apksigner dalvik-exchange android-sdk-platform-23
 ```
 
-`d8` ships with the Android SDK build-tools (`$ANDROID_HOME/build-tools/<version>/d8`).
-`d8` 随 Android SDK build-tools 提供（`$ANDROID_HOME/build-tools/<version>/d8`）。
+The script uses `dalvik-exchange` when it is present (the apt package, what CI uses), otherwise
+`d8` from the Android SDK build-tools (`$ANDROID_HOME/build-tools/<version>/d8`); set `D8` to
+point at the latter if it is not on `PATH`.
+脚本优先用 `dalvik-exchange`（apt 包，CI 用它），没有时回退到 Android SDK build-tools 里的
+`d8`（`$ANDROID_HOME/build-tools/<version>/d8`）；若 `d8` 不在 `PATH`，用 `D8` 指定路径。
 
 ## Build / 构建
 
