@@ -44,6 +44,11 @@ install either one, or both.
 
 Wired and USB-C output only need step 1. Bluetooth needs both.
 
+## Tested on
+
+Only tested on a **POCO F6 (peridot)** running **PixelOS 17 (Android 17)**. Other devices and
+ROMs are untested.
+
 ## Build
 
 Each deliverable builds on its own. See [`kernelsu/`](kernelsu) and [`xposed/BUILD.md`](xposed/BUILD.md):
@@ -93,6 +98,10 @@ FineVolume（两个）：  30 档   每按一下约 3.3%   蓝牙：手机衰减
    没有设置界面 —— 装上并启用**就是**开关；在 LSPosed 里停用即可关闭。
 
 只走有线 / USB-C 的话，第 1 步就够。蓝牙两个都要。
+
+### 测试环境
+
+仅在 **POCO F6（peridot）** 上、**PixelOS 17（Android 17）** 下测试过。其它机型和 ROM 未经验证。
 
 ### 构建
 
